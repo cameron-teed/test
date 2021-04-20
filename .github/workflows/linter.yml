@@ -1,24 +1,17 @@
 name: GitHub's Super Linter
  
 on:
-
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
- 
   workflow_dispatch:
-
-
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
- 
+      - name: test
       - uses: actions/checkout@v2
       - name: Run GitHub Super Linter
         uses: github/super-linter@v3.15.5
