@@ -1,21 +1,25 @@
-name: GitHub's Super Linter
- 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+###############################################
 
-  workflow_dispatch:
+# Run GitHub's Super Linter against code base #
+
+###############################################
+
+
+
+name: GitHub's Super Linter
+on: push
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
-        uses: actions/checkout@v2
-      - name: Run GitHub Super Linter
-        uses: github/super-linter@v3.15.5
-        env:
-              VALIDATE_ALL_CODEBASE: false
-              DEFAULT_BRANCH: main
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ run-linters:
+  name: GitHub's Super Linter
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: test
+     uses: actions/checkout@master
+   - name: Run GitHub Super Linter
+     uses: github/super-linter@master
+  env:
+   VALIDATE_ALL_CODEBASE: true
+   DEFAULT_BRANCH: main
+   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
